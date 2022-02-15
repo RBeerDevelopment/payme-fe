@@ -15,7 +15,7 @@ export function LanguageToggle(): React.ReactElement {
                 router.push("", "", { locale: "de", scroll: false });
                 break;
             case "de":
-                router.push("/en", "/en", { locale: "en", scroll: false });
+                router.push("", "", { locale: "en", scroll: false });
                 break;
             default:
                 break;

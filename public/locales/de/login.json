@@ -1,0 +1,10 @@
+{
+    "form-header": "Melden Sie sich an",
+    "form-button-signin": "Anmeldung",
+    "form-button-error": "Fehler",
+    "form-username-error": "Bitte geben SIe Ihren Username ein.",
+    "form-password-error": "Bitte geben Sie Ihr Passwort ein.",
+    "form-username": "Username",
+    "form-password": "Passwort",
+    "form-forgot-password": "Passwort vergessen?"
+}

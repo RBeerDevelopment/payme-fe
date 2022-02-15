@@ -1,0 +1,10 @@
+{
+    "form-header": "Sign in to your account",
+    "form-button-signin": "Sign in",
+    "form-button-error": "Error",
+    "form-username-error": "Please enter your username.",
+    "form-password-error": "Please enter your password.",
+    "form-username": "Username",
+    "form-password": "Password",
+    "form-forgot-password": "Forgot password?"
+}
