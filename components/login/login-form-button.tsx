@@ -1,20 +1,22 @@
 import { useTranslation } from "next-i18next";
 import React from "react";
+import { ActionType } from "./action-type";
 import { SendState } from "./send-state";
 
 interface Props {
-    state: SendState
+    state: SendState,
+    actionType: ActionType
     handleClick: () => void
 }
 
 enum ButtonColorClass {
-    NoError = "bg-green-700 hover:bg-green-800 focus:ring-green-700",
+    NoError = "bg-green-500 hover:bg-green-600 hover:scale-105 focus:ring-green-700",
     Error = "bg-red-500 hover:bg-red-600 focus:ring-red-500"
 }
 
 export function LoginFormButton(props: Props): React.ReactElement {
 
-    const { state, handleClick } = props;
+    const { actionType, state, handleClick } = props;
 
     const { t } = useTranslation("login");
 
@@ -23,7 +25,12 @@ export function LoginFormButton(props: Props): React.ReactElement {
 
     switch (state) {
         case SendState.NotSend:
-            content = t("form-button-signin");
+            if(actionType === ActionType.Signin) {
+                content = t("signin-form-button");
+            } else if(actionType === ActionType.Signup) {
+                content = t("signup-form-button");
+            }
+            
             colorClasses = ButtonColorClass.NoError;
             break;
         case SendState.Sending:
@@ -43,7 +50,7 @@ export function LoginFormButton(props: Props): React.ReactElement {
 
     return (
         <div className="w-full flex justify-center">
-            <button onClick={handleClick} className={`group w-1/2 md:1/3 flex justify-center py-2 px-4 my-4 border border-transparent text-sm font-medium rounded-md text-white focus:outline-none focus:ring-2 focus:ring-offset-2 ${colorClasses}`}>
+            <button onClick={handleClick} className={`group capitalize w-1/2 md:1/3 flex justify-center py-2 px-4 mt-4 border border-transparent text-sm font-medium rounded-md text-white focus:outline-none focus:ring-2 focus:ring-offset-2 ${colorClasses}`}>
                 {content}
             </button>
         </div>

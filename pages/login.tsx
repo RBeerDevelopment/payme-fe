@@ -1,16 +1,15 @@
 import React from "react";
 
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { LoginForm } from "@components/login/login-form";
+import { LoginCard } from "@components/login/login-card";
 import { Layout } from "@components/layout/layout";
 
 export default function Login(): React.ReactElement {
-    
 
     return (
         <Layout>
             <div>
-                <LoginForm />
+                <LoginCard />
             </div>
         </Layout>
     );

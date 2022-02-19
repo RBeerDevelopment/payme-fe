@@ -1,10 +1,20 @@
 {
-    "form-header": "Sign in to your account",
-    "form-button-signin": "Sign in",
+    "signin-form-header": "Sign in to your account",
+    "signin-form-button": "Sign in",
+    "signup-form-header": "Register your account",
+    "signup-form-button": "Sign up",
     "form-button-error": "Error",
     "form-username-error": "Please enter your username.",
     "form-password-error": "Please enter your password.",
+    "form-firstName-error": "Please enter your first name.",
+    "form-lastName-error": "Please enter your last name.",
+    "form-email-error": "Please enter your email.",
     "form-username": "Username",
     "form-password": "Password",
-    "form-forgot-password": "Forgot password?"
+    "form-firstName": "First Name",
+    "form-lastName": "Last Name",
+    "form-email": "Email",
+    "form-forgot-password": "Forgot password?",
+    "signin-instead": "Already have an account? Sign in",
+    "signup-instead": "No account? Sign up"
 }
