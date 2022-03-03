@@ -7,15 +7,16 @@ import { GlobeAltIcon } from "@heroicons/react/solid";
 export function LanguageToggle(): React.ReactElement {
 
     const router = useRouter();
+    const { pathname, asPath, query } = router;
 
 
     function toggleLanguage() {
         switch (router.locale) {
             case "en":
-                router.push("", "", { locale: "de", scroll: false });
+                router.push({ pathname, query }, asPath, { locale: "de", scroll: false });
                 break;
             case "de":
-                router.push("", "", { locale: "en", scroll: false });
+                router.push({ pathname, query }, asPath, { locale: "en", scroll: false });
                 break;
             default:
                 break;

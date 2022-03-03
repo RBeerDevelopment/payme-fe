@@ -1,4 +1,5 @@
 import { gql } from "@apollo/client";
+import { AuthResult } from "@graphql/auth-data";
 
 export interface SignupVars {
     username: string
@@ -6,6 +7,10 @@ export interface SignupVars {
     email: string
     firstName: string 
     lastName: string 
+}
+
+export interface SignupData {
+    signup: AuthResult
 }
 
 export const SignupMutation = gql`

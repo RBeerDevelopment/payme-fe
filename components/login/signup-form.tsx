@@ -1,7 +1,7 @@
 import { useMutation } from "@apollo/client";
-import { AuthData, SignupMutation, SignupVars } from "../../graphql";
+import { SignupData, SignupMutation, SignupVars } from "../../graphql";
 import router from "next/router";
-import React, { useEffect } from "react";
+import React from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import { ActionType } from "./action-type";
 import { LoginFormButton } from "./login-form-button";
@@ -12,7 +12,7 @@ import { SendState } from "./send-state";
 export function SignupForm(): React.ReactElement {
 
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const [ signup, { data, loading, error }] = useMutation<AuthData, SignupVars>(SignupMutation);
+    const [ signup, { data, loading, error }] = useMutation<SignupData, SignupVars>(SignupMutation);
 
     // const [token, setToken] = React.useState(null);
     // const captchaRef = React.useRef(null);
@@ -21,20 +21,16 @@ export function SignupForm(): React.ReactElement {
     const [state, setState] = React.useState<SendState>(SendState.NotSend);
 
     React.useEffect(() => {
-        console.log("useEffect");
         if(error)  {
             setState(SendState.Error);
-            console.log({error});
         }
         if(loading) setState(SendState.Sending);
 
         if(data) {
+            const { token, user: { username } } = data.signup; 
             setState(SendState.Success);
-
-            
-            localStorage.setItem("token", data.login.token);
-            router.push(`/profile/${data.login.user.username}`);
-
+            localStorage.setItem("token",token);
+            router.push(`/profile/${username}`);
         }
     }, [data, loading, error]);
 

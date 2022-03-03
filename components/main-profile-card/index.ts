@@ -1,0 +1,1 @@
+export { MainProfileCard } from "./main-profile-card";

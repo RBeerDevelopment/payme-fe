@@ -1,5 +1,5 @@
 import { useMutation } from "@apollo/client";
-import { AuthData, LoginMutation, LoginVars } from "../../graphql";
+import { AuthData, LoginData, LoginMutation, LoginVars } from "../../graphql";
 import router from "next/router";
 import React from "react";
 import { FieldValues, useForm } from "react-hook-form";
@@ -12,7 +12,7 @@ import { SendState } from "./send-state";
 export function SigninForm(): React.ReactElement {
 
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const [ login, { data, loading, error }] = useMutation<AuthData, LoginVars>(LoginMutation, { errorPolicy: "all" });
+    const [ login, { data, loading, error }] = useMutation<LoginData, LoginVars>(LoginMutation, { errorPolicy: "all" });
 
     // const [token, setToken] = React.useState(null);
     // const captchaRef = React.useRef(null);
@@ -34,11 +34,12 @@ export function SigninForm(): React.ReactElement {
         }
 
         if(data) {
-            setState(SendState.Success);
+            const { token, user: { username } } = data.login; 
             
-            localStorage.setItem("token", data.login.token);
-            router.push(`/profile/${data.login.user.username}`);
-            return;
+            setState(SendState.Success);
+
+            localStorage.setItem("token",token);
+            router.push(`/profile/${username}`);
         }
 
         setState(SendState.NotSend);

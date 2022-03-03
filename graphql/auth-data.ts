@@ -1,10 +1,8 @@
-export interface AuthData {
-    login: {
-        token: string
-        user: { 
-            id: number,
-            username: string
-        }
+export interface AuthResult {
+    token: string
+    user: { 
+        id: number,
+        username: string
     }
 }
   
