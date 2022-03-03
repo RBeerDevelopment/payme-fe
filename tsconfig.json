@@ -32,6 +32,9 @@
       ],
       "@sections/*": [
         "sections/*"
+      ],
+      "@graphql/*": [
+        "graphql/*"
       ]
     }
   },

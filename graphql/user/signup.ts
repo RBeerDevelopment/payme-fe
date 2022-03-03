@@ -1,6 +1,5 @@
 import { gql } from "@apollo/client";
 
-
 export interface SignupVars {
     username: string
     password: string
@@ -20,9 +19,9 @@ export const SignupMutation = gql`
         signup(
             username: $username, 
             password: $password,
-            email: $email
-            firstName: $firstName 
-            lastName: $lastName 
+            email: $email,
+            firstName: $firstName,
+            lastName: $lastName
         ) {
             token
             user {

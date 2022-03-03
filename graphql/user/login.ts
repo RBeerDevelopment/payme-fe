@@ -1,9 +1,4 @@
 import { gql } from "@apollo/client";
-
-export interface AuthData {
-    token: string
-    user: { id: number }
-  }
   
 export interface LoginVars {
     username: string

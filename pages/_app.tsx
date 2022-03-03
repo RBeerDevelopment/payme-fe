@@ -10,7 +10,7 @@ import client from "../apollo-client";
 
 function MyApp({ Component, pageProps }: AppProps): React.ReactElement {
     return (
-        <div>
+        <>
             <Head>
                 <title>Pay Me</title>
                 <link rel='icon' href='/favicon.ico' />
@@ -19,7 +19,7 @@ function MyApp({ Component, pageProps }: AppProps): React.ReactElement {
             <ApolloProvider client={client}>
                 <Component {...pageProps} />
             </ApolloProvider>
-        </div>
+        </>
     );
 }
 

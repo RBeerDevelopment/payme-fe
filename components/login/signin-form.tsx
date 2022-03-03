@@ -1,6 +1,6 @@
 import { useMutation } from "@apollo/client";
-import { AuthData, LoginMutation, LoginVars } from "graphql/user";
-import { useTranslation } from "next-i18next";
+import { AuthData, LoginMutation, LoginVars } from "../../graphql";
+import router from "next/router";
 import React from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import { ActionType } from "./action-type";
@@ -19,17 +19,19 @@ export function SigninForm(): React.ReactElement {
     // const [captchaError, setCaptchaError] = React.useState(false);
 
     const [state, setState] = React.useState<SendState>(SendState.NotSend);
-    
-    const { t } = useTranslation("login");
+
 
     React.useEffect(() => {
         if(error) setState(SendState.Error);
         if(loading) setState(SendState.Sending);
 
         if(data) {
+
+            console.log({ data });
             setState(SendState.Success);
             // actually login user here
-            localStorage.setItem("token", data.token);
+            localStorage.setItem("token", data.login.token);
+            router.push(`/profile/${data.login.user.username}`);
         }
     }, [data, loading, error]);
 
@@ -91,10 +93,6 @@ export function SigninForm(): React.ReactElement {
                 actionType={ActionType.Signin}
                 state={state}
             />
-            <div className="w-full text-center mt-0">
-                <a className="hover:underline text-gray-900 mt-0 cursor-pointer text-sm">{t("form-forgot-password")}</a>
-            </div>
-
         </form>
     );
 }

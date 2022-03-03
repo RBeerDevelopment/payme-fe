@@ -1,7 +1,6 @@
 import { useMutation } from "@apollo/client";
-import { AuthData } from "graphql/user";
-import { SignupMutation, SignupVars } from "graphql/user/signup";
-import { useTranslation } from "next-i18next";
+import { AuthData, SignupMutation, SignupVars } from "../../graphql";
+import router from "next/router";
 import React from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import { ActionType } from "./action-type";
@@ -20,18 +19,17 @@ export function SignupForm(): React.ReactElement {
     // const [captchaError, setCaptchaError] = React.useState(false);
 
     const [state, setState] = React.useState<SendState>(SendState.NotSend);
-    
-    const { t } = useTranslation("login");
 
     React.useEffect(() => {
-        console.log({ data, error });
         if(error) setState(SendState.Error);
         if(loading) setState(SendState.Sending);
 
         if(data) {
             setState(SendState.Success);
             // actually login user here
-            localStorage.setItem("token", data.token);
+            localStorage.setItem("token", data.login.token);
+            router.push(`/profile/${data.login.user.username}`);
+
         }
     }, [data, loading, error]);
 
@@ -81,7 +79,8 @@ export function SignupForm(): React.ReactElement {
                         autocomplete="email"
                         error={errors.email}
                         hookFormSpread={register("email", {
-                            required: "form-email-error"
+                            required: "form-email-error",
+                            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
                         })}
                     />
 
@@ -123,9 +122,7 @@ export function SignupForm(): React.ReactElement {
                 actionType={ActionType.Signin}
                 state={state}
             />
-            <div className="w-full text-center mt-0">
-                <a className="hover:underline text-gray-900 mt-0 cursor-pointer text-sm">{t("form-forgot-password")}</a>
-            </div>
+            
 
         </form>
     );

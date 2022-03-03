@@ -35,7 +35,7 @@ export default function Home(): React.ReactElement {
     );
 }
 
-export async function getStaticProps({ locale }) {
+export async function getStaticProps({ locale }: { locale: string }) {
     return {
         props: {
             ...(await serverSideTranslations(locale, ["common"])),
