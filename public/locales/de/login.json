@@ -9,6 +9,7 @@
     "form-firstName-error": "Bitte geben Sie Ihren Vornamen ein.",
     "form-lastName-error": "Bitte geben Sie Ihren Nachnamen ein..",
     "form-email-error": "Bitte geben Sie Ihre Email ein.",
+    "form-password-error-length": "Mindestens 8 Zeichen.",
     "form-username": "Username",
     "form-password": "Passwort",
     "form-firstName": "Vorname",

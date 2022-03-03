@@ -12,7 +12,7 @@ import { SendState } from "./send-state";
 export function SigninForm(): React.ReactElement {
 
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const [ login, { data, loading, error }] = useMutation<AuthData, LoginVars>(LoginMutation);
+    const [ login, { data, loading, error }] = useMutation<AuthData, LoginVars>(LoginMutation, { errorPolicy: "all" });
 
     // const [token, setToken] = React.useState(null);
     // const captchaRef = React.useRef(null);
@@ -22,17 +22,27 @@ export function SigninForm(): React.ReactElement {
 
 
     React.useEffect(() => {
-        if(error) setState(SendState.Error);
-        if(loading) setState(SendState.Sending);
+        console.log("useEffect");
+        if(error)  {
+            setState(SendState.Error);
+            console.log({error});
+            return;
+        }
+        if(loading) { 
+            setState(SendState.Sending); 
+            return; 
+        }
 
         if(data) {
-
-            console.log({ data });
             setState(SendState.Success);
-            // actually login user here
+            
             localStorage.setItem("token", data.login.token);
             router.push(`/profile/${data.login.user.username}`);
+            return;
         }
+
+        setState(SendState.NotSend);
+        
     }, [data, loading, error]);
 
     async function onSubmit({ username, password }: FieldValues) {
@@ -71,7 +81,10 @@ export function SigninForm(): React.ReactElement {
                         error={errors.password}
                         hookFormSpread={register("password", {
                             required: "form-password-error",
-                            minLength: 8
+                            minLength: { 
+                                value: 8,
+                                message: "form-password-error-length"
+                            }
                         })}
                     />
                 </div>

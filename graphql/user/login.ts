@@ -11,6 +11,7 @@ export const LoginMutation = gql`
             token
             user {
                 id
+                username
             }
         }
     }

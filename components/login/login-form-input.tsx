@@ -21,7 +21,6 @@ export function LoginFormInput(props: Props): React.ReactElement {
 
     const { t } = useTranslation("login");
 
-
     const inputClasses = "mt-1 focus:ring-green-700 focus:border-green-700 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md";
 
     return (

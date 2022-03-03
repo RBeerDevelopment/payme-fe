@@ -1,7 +1,7 @@
 import { useMutation } from "@apollo/client";
 import { AuthData, SignupMutation, SignupVars } from "../../graphql";
 import router from "next/router";
-import React from "react";
+import React, { useEffect } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import { ActionType } from "./action-type";
 import { LoginFormButton } from "./login-form-button";
@@ -21,12 +21,17 @@ export function SignupForm(): React.ReactElement {
     const [state, setState] = React.useState<SendState>(SendState.NotSend);
 
     React.useEffect(() => {
-        if(error) setState(SendState.Error);
+        console.log("useEffect");
+        if(error)  {
+            setState(SendState.Error);
+            console.log({error});
+        }
         if(loading) setState(SendState.Sending);
 
         if(data) {
             setState(SendState.Success);
-            // actually login user here
+
+            
             localStorage.setItem("token", data.login.token);
             router.push(`/profile/${data.login.user.username}`);
 
@@ -43,7 +48,11 @@ export function SignupForm(): React.ReactElement {
         //     return;
         // }
 
-        signup({ variables: { username, password, email, firstName, lastName }});
+        try {
+            signup({ variables: { username, password, email, firstName, lastName }});
+        } catch(e) {
+            console.log({ e });
+        }
 
     }
     

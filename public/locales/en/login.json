@@ -9,6 +9,7 @@
     "form-firstName-error": "Please enter your first name.",
     "form-lastName-error": "Please enter your last name.",
     "form-email-error": "Please enter your email.",
+    "form-password-error-length": "At least 8 characters.",
     "form-username": "Username",
     "form-password": "Password",
     "form-firstName": "First Name",
