@@ -85,7 +85,10 @@ export function SignupForm(): React.ReactElement {
                         error={errors.email}
                         hookFormSpread={register("email", {
                             required: "form-email-error",
-                            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
+                            pattern: {
+                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                message: "form-email-error"
+                            }
                         })}
                     />
 
