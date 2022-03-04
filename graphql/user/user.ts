@@ -1,4 +1,5 @@
 import { gql } from "@apollo/client";
+import { Sepa } from "@graphql/sepa/sepa";
 
 export interface User {
     id: number,
@@ -7,6 +8,7 @@ export interface User {
     username: string,
     email: string
     avatarUrl: string
+    sepa?: Sepa[]
 }
 
 export interface UserData {
@@ -26,6 +28,13 @@ export const USER_QUERY = gql`
             lastName
             email
             avatarUrl
+            sepa {
+                id
+                iban
+                bic
+                bankName
+                accountName
+            }
         }
     }
 `;

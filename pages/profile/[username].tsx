@@ -4,7 +4,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { Layout } from "@components/layout/layout";
 import { useRouter } from "next/router";
 import ClientOnly from "@components/client-only/client-only";
-import { MainProfileCard } from "@components/main-profile-card";
+import { Profile } from "@components/profile/profile";
 
 export default function Login(): React.ReactElement {
 
@@ -15,12 +15,12 @@ export default function Login(): React.ReactElement {
 
     return (
         <Layout>
-            <>
-                <p className="text-4xl p-8">Profile</p>
+            <div className="h-full">
+                <p className="text-4xl p-8 pb-4">Profile</p>
                 <ClientOnly>
-                    <MainProfileCard username={usernameString} />
+                    <Profile username={usernameString} />
                 </ClientOnly>
-            </>
+            </div>
         </Layout>
     );
 }
