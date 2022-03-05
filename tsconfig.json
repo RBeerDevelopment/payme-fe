@@ -35,7 +35,10 @@
       ],
       "@graphql/*": [
         "graphql/*"
-      ]
+      ],
+      "@views/*": [
+        "views/*"
+      ],
     }
   },
   "include": [

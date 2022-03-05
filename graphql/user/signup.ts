@@ -32,6 +32,7 @@ export const SignupMutation = gql`
             user {
                 id
                 username
+                
             }
         }
     }

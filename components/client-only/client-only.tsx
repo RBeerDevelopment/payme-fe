@@ -4,7 +4,7 @@ interface Props {
     children: React.ReactElement
 }
 
-export default function ClientOnly({ children, ...delegated }: Props): React.ReactElement | null {
+export function ClientOnly ({ children, ...delegated }: Props): React.ReactElement | null {
     const [hasMounted, setHasMounted] = useState(false);
   
     useEffect(() => {

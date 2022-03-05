@@ -1,0 +1,1 @@
+export { PaymentMethodsProfileCard } from "./payment-methods-profile-card";

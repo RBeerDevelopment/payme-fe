@@ -1,8 +1,7 @@
 import { useQuery } from "@apollo/client";
 import { LoadingIndicator } from "@components/loading-indicator/loading-indicator";
-import { MainProfileCard } from "@components/main-profile-card";
-import { Modal } from "@components/modal/modal";
-import { SepaProfileCard } from "@components/sepa-profile-card";
+import { MainProfileCard } from "@views/profile/main-profile-card";
+import { PaymentMethodsProfileCard } from "@views/profile/payment-methods-profile-card";
 import { UserData, UserQueryVars, USER_QUERY } from "@graphql/user";
 import React from "react";
 
@@ -29,13 +28,13 @@ export function Profile(props: Props): React.ReactElement {
     
     return (
         <>
-            <div className="w-screen grid grid-flow-row grid-cols-1  lg:grid-cols-3">
-                <div className="col-span-1">
+            <div className="w-screen grid grid-flow-row grid-cols-1 lg:grid-cols-3">
+                <div className="col-span-1 row-span-2">
                     <MainProfileCard user={user} />
                 </div>
                 <div className="col-span-2">
-                    <SepaProfileCard sepaList={user.sepa} />
-                </div >
+                    <PaymentMethodsProfileCard user={user} />
+                </div>
             </ div>
         </>
     );

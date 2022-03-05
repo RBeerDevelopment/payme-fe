@@ -1,10 +1,10 @@
 import React from "react";
 
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { Layout } from "@components/layout/layout";
+import { Layout } from "@components/layout";
 import { useRouter } from "next/router";
-import ClientOnly from "@components/client-only/client-only";
-import { Profile } from "@components/profile/profile";
+import { ClientOnly } from "@components/client-only";
+import { Profile } from "@views/profile";
 
 export default function Login(): React.ReactElement {
 
@@ -30,7 +30,6 @@ export async function getServerSideProps({ locale }: { locale: string}) {
     return {
         props: {
             ...(await serverSideTranslations(locale, ["profile"])),
-            // Will be passed to the page component as props
         },
     };
 }

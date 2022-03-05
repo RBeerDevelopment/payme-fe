@@ -5,8 +5,9 @@ import React from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import { ActionType } from "./action-type";
 import { LoginFormButton } from "./login-form-button";
-import { LoginFormInput } from "./login-form-input";
 import { SendState } from "./send-state";
+import { FormHookInput } from "@components/form-hook-input/form-hook-input";
+import { useTranslation } from "next-i18next";
 
 
 export function SignupForm(): React.ReactElement {
@@ -17,6 +18,8 @@ export function SignupForm(): React.ReactElement {
     // const [token, setToken] = React.useState(null);
     // const captchaRef = React.useRef(null);
     // const [captchaError, setCaptchaError] = React.useState(false);
+
+    const { t } = useTranslation("login");
 
     const [state, setState] = React.useState<SendState>(SendState.NotSend);
 
@@ -58,31 +61,34 @@ export function SignupForm(): React.ReactElement {
             <div className="rounded-md shadow-sm -space-y-px">
                 <div className="grid gap-6">
 
-                    <LoginFormInput
+                    <FormHookInput
                         name="firstName"
+                        label={t("form-firstName")}
                         type="text"
                         autocomplete="firstName"
-                        error={errors.firstName}
+                        errorMessage={t(errors.firstName)}
                         hookFormSpread={register("firstName", {
                             required: "form-first-name-error"
                         })}
                     />
 
-                    <LoginFormInput
+                    <FormHookInput
                         name="lastName"
+                        label={t("form-lastName")}
                         type="text"
                         autocomplete="lastName"
-                        error={errors.lastName}
+                        errorMessage={t(errors.lastName)}
                         hookFormSpread={register("lastName", {
                             required: "form-last-name-error"
                         })}
                     />
 
-                    <LoginFormInput
+                    <FormHookInput
                         name="email"
+                        label={t("form-email")}
                         type="email"
                         autocomplete="email"
-                        error={errors.email}
+                        errorMessage={t(errors.email)}
                         hookFormSpread={register("email", {
                             required: "form-email-error",
                             pattern: {
@@ -92,20 +98,22 @@ export function SignupForm(): React.ReactElement {
                         })}
                     />
 
-                    <LoginFormInput
+                    <FormHookInput
                         name="username"
+                        label={t("form-username")}
                         type="text"
-                        error={errors.username}
+                        errorMessage={t(errors.username)}
                         hookFormSpread={register("username", {
                             required: "form-username-error",
                         })}
                     />
 
-                    <LoginFormInput
+                    <FormHookInput
                         name="password"
+                        label={t("form-password")}
                         type="password"
                         autocomplete="password"
-                        error={errors.password}
+                        errorMessage={t(errors.password)}
                         hookFormSpread={register("password", {
                             required: "form-password-error",
                             minLength: 8

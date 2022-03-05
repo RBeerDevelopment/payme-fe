@@ -1,12 +1,12 @@
 import React from "react";
 
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { LoginCard } from "@components/login/login-card";
-import { Layout } from "@components/layout/layout";
+import { LoginCard } from "@views/login";
+import { Layout } from "@components/layout";
 
 export default function Login(): React.ReactElement {
     return (
-        <Layout>
+        <Layout showLogout={false} >
             <div>
                 <LoginCard />
             </div>

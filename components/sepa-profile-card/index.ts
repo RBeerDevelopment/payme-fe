@@ -1,1 +1,0 @@
-export { SepaProfileCard } from "./sepa-profile-card";
