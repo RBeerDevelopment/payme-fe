@@ -2,11 +2,11 @@ import { gql } from "@apollo/client";
 
 export interface User {
     id: number,
-    firstName: string,
-    lastName: string,
     username: string,
-    email: string
-    avatarUrl: string
+    firstName?: string,
+    lastName?: string,
+    email?: string
+    avatarUrl?: string
 }
 
 export interface UserData {

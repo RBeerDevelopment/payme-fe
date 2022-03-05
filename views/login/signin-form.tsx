@@ -3,17 +3,19 @@ import { LoginData, LoginMutation, LoginVars } from "../../graphql";
 import router from "next/router";
 import React from "react";
 import { FieldValues, useForm } from "react-hook-form";
-import { ActionType } from "./action-type";
-import { LoginFormButton } from "./login-form-button";
-import { SendState } from "./send-state";
+import { SendState } from "../../components/send-state-button/send-state";
 import { FormHookInput } from "@components/form-hook-input/form-hook-input";
 import { useTranslation } from "next-i18next";
+import { useAuthContext } from "context/auth-context/auth-context";
+import { SendStateButton } from "@components/send-state-button";
 
 
 export function SigninForm(): React.ReactElement {
 
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [ login, { data, loading, error }] = useMutation<LoginData, LoginVars>(LoginMutation, { errorPolicy: "all" });
+
+    const { login: contextLogin } = useAuthContext();
 
     // const [token, setToken] = React.useState(null);
     // const captchaRef = React.useRef(null);
@@ -35,12 +37,15 @@ export function SigninForm(): React.ReactElement {
         }
 
         if(data) {
-            const { token, user: { username } } = data.login; 
+
+            console.log("received data");
+            const { token, user } = data.login; 
             
             setState(SendState.Success);
 
-            localStorage.setItem("token",token);
-            router.push(`/profile/${username}`);
+            contextLogin(user, token);
+
+            router.push(`/profile/${user.username}`);
         }
 
         setState(SendState.NotSend);
@@ -105,11 +110,15 @@ export function SigninForm(): React.ReactElement {
                         </div>
                     )} */}
 
-            <LoginFormButton
-                handleClick={handleSubmit(onSubmit)}
-                actionType={ActionType.Signin}
-                state={state}
-            />
+            <div className="flex flex-row justify-center">
+                <SendStateButton
+                    onClick={handleSubmit(onSubmit)}
+                    errorText={t("form-button-error")}
+                    defaulText={t("signin-form-button")}
+                    state={state}
+                    width="1/3"
+                />
+            </div>
         </form>
     );
 }

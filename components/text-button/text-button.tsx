@@ -24,7 +24,7 @@ export function TextButton(props: Props): React.ReactElement {
         paddingX = 4,
         paddingY = 2,
         width = "",
-        textColor = "whtie"
+        textColor = "white"
     } = props;
     return (
         <button 

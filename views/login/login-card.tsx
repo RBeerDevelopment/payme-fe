@@ -28,7 +28,7 @@ export function LoginCard() {
             <div className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden m-4 p-5 w-4/5 md:w-1/2 lg:w-2/5">
                 <p className="text-xl font-semibold capitalize text-center py-4">{headerText}</p>
                 {actionType === ActionType.Signup ? <SignupForm /> : <SigninForm />}
-                <div className="w-full text-center mt-0">
+                <div className="w-full text-center mt-4">
                     <a className="hover:underline text-gray-900 mt-0 cursor-pointer text-sm">{t("form-forgot-password")}</a>
                 </div>
             </div>

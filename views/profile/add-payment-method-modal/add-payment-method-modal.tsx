@@ -34,7 +34,7 @@ export function AddPaymentMethodModal(props: Props): React.ReactElement {
                         <DropdownSelect options={availablePaymentMethods} selectedOption={paymentOption} label="Type" setSelectedOption={setPaymentOption} />
                     </div>
                     <div className="pt-4">
-                        {paymentOption.value === PaymentMethod.PayPal && <AddPaypalForm />}
+                        {paymentOption.value === PaymentMethod.PayPal && <AddPaypalForm closeModal={hideModal} />}
                     </div>
                 </div>
             </Modal>

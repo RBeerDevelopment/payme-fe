@@ -16,7 +16,7 @@ export function Modal(props: Props): React.ReactElement {
         <Transition
             show={show} as={Fragment}
         >
-            <Dialog className="fixed z-10 inset-0 overflow-y-auto" onClose={hideModal}>
+            <Dialog className="fixed z-50 inset-0 pt-12 overflow-y-auto" onClose={hideModal}>
                 <div className="min-h-screen px-4 text-center">
                     <Transition.Child
                         as={Fragment}

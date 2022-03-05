@@ -3,14 +3,16 @@ import { SignupData, SignupMutation, SignupVars } from "../../graphql";
 import router from "next/router";
 import React from "react";
 import { FieldValues, useForm } from "react-hook-form";
-import { ActionType } from "./action-type";
-import { LoginFormButton } from "./login-form-button";
-import { SendState } from "./send-state";
+import { SendState } from "../../components/send-state-button/send-state";
 import { FormHookInput } from "@components/form-hook-input/form-hook-input";
 import { useTranslation } from "next-i18next";
+import { useAuthContext } from "context/auth-context/auth-context";
+import { SendStateButton } from "@components/send-state-button";
 
 
 export function SignupForm(): React.ReactElement {
+
+    const { login } = useAuthContext();
 
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [ signup, { data, loading, error }] = useMutation<SignupData, SignupVars>(SignupMutation);
@@ -30,10 +32,12 @@ export function SignupForm(): React.ReactElement {
         if(loading) setState(SendState.Sending);
 
         if(data) {
-            const { token, user: { username } } = data.signup; 
+            const { token, user } = data.signup; 
             setState(SendState.Success);
-            localStorage.setItem("token",token);
-            router.push(`/profile/${username}`);
+            
+            login(user, token);
+
+            router.push(`/profile/${user.username}`);
         }
     }, [data, loading, error]);
 
@@ -133,13 +137,16 @@ export function SignupForm(): React.ReactElement {
                         </div>
                     )} */}
 
-            <LoginFormButton
-                handleClick={handleSubmit(onSubmit)}
-                actionType={ActionType.Signin}
-                state={state}
-            />
+            <div className="flex flex-row justify-center">
+                <SendStateButton
+                    onClick={handleSubmit(onSubmit)}
+                    errorText={t("form-button-error")}
+                    defaulText={t("signup-form-button")}
+                    width="1/3"
+                    state={state}
+                />
+            </div>
             
-
         </form>
     );
 }

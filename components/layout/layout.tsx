@@ -35,7 +35,9 @@ export function Layout(props: Props): React.ReactElement {
         <main>
             <div className="min-h-screen w-screen overflow-x-hidden bg-gray-200 flex flex-1 justify-between flex-col">
                 <NavBar />
-                {children}
+                <div className="mt-20">
+                    {children}
+                </div>
                 <Footer />
             </ div>
             <DarkModeToggle toggleDarkMode={toggleDarkMode} />

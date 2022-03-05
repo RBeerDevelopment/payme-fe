@@ -7,6 +7,8 @@ import { appWithTranslation } from "next-i18next";
 
 import { ApolloProvider } from "@apollo/client";
 import client from "../apollo-client";
+import { AuthProvider } from "context/auth-context";
+import { RouteGuard } from "@components/route-guard";
 
 function MyApp({ Component, pageProps }: AppProps): React.ReactElement {
     return (
@@ -16,9 +18,13 @@ function MyApp({ Component, pageProps }: AppProps): React.ReactElement {
                 <link rel='icon' href='/favicon.ico' />
                 <meta name="description" content="Full-Stack Web and Mobile Developer with more than 7 years of experience." />
             </Head>
-            <ApolloProvider client={client}>
-                <Component {...pageProps} />
-            </ApolloProvider>
+            <AuthProvider>
+                <ApolloProvider client={client}>
+                    <RouteGuard>
+                        <Component {...pageProps} />
+                    </RouteGuard>
+                </ApolloProvider>
+            </ AuthProvider>
         </>
     );
 }
