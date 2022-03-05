@@ -6,7 +6,7 @@ import { Layout } from "@components/layout";
 
 export default function Login(): React.ReactElement {
     return (
-        <Layout showLogout={false} >
+        <Layout>
             <div>
                 <LoginCard />
             </div>

@@ -10,6 +10,7 @@ interface Props {
     paddingX?: number
     paddingY?: number
     width?:    string
+    textColor?: string
 }
 
 export function TextButton(props: Props): React.ReactElement {
@@ -22,11 +23,12 @@ export function TextButton(props: Props): React.ReactElement {
         marginY = 0,
         paddingX = 4,
         paddingY = 2,
-        width = ""
+        width = "",
+        textColor = "whtie"
     } = props;
     return (
         <button 
-            className={`mx-${marginX} my-${marginY} bg-${bgColor} shadow-md hover:shadow-xl hover:scale-105 text-white py-${paddingY} px-${paddingX} rounded-md ${width && `w-${width}`}`}
+            className={`mx-${marginX} my-${marginY} bg-${bgColor} shadow-md hover:shadow-xl hover:scale-105 text-${textColor} py-${paddingY} px-${paddingX} rounded-md ${width && `w-${width}`}`}
             onClick={onClick}
         >
             {children}
