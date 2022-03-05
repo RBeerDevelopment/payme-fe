@@ -3,14 +3,14 @@ import { FormHookInput } from "@components/form-hook-input/form-hook-input";
 import { EmptyFn } from "@components/text-button";
 import { FieldValues, useForm } from "react-hook-form";
 import { useMutation } from "@apollo/client";
-import { AddPayPalData, AddPayPalVars, ADD_PAYPAL_MUTATION } from "@graphql/paypal/add-paypal";
 import { SendState, SendStateButton } from "@components/send-state-button";
+import { AddSepaData, AddSepaVars, ADD_SEPA_MUTATION } from "@graphql/sepa/add-sepa";
 
 interface Props {
     closeModal: EmptyFn
 }
 
-export function AddPaypalForm(props: Props): React.ReactElement {
+export function AddSepaForm(props: Props): React.ReactElement {
 
     const { closeModal } = props;
 
@@ -18,7 +18,7 @@ export function AddPaypalForm(props: Props): React.ReactElement {
 
     const [sendState, setSendState] = React.useState<SendState>(SendState.NotSend);
 
-    const [ addPaypal, { data, loading, error }] = useMutation<AddPayPalData, AddPayPalVars>(ADD_PAYPAL_MUTATION, { errorPolicy: "all" });
+    const [ addPaypal, { data, loading, error }] = useMutation<AddSepaData, AddSepaVars>(ADD_SEPA_MUTATION, { errorPolicy: "all" });
 
     React.useEffect(() => {
         if(data) {
@@ -31,9 +31,9 @@ export function AddPaypalForm(props: Props): React.ReactElement {
         }
     },
     [data, loading, error]);
-
-    async function onSubmit({ accountName, username }: FieldValues) {
-        addPaypal({ variables: { accountName, username }});
+    
+    async function onSubmit({ accountName, iban }: FieldValues) {
+        addPaypal({ variables: { accountName, iban }});
     }
     
     return (
@@ -41,12 +41,16 @@ export function AddPaypalForm(props: Props): React.ReactElement {
             <form className="space-y-4" action="#">
                 <div className="rounded-md shadow-sm space-y-4">
                     <FormHookInput
-                        name="username"
-                        label="Paypal-Username"
+                        name="iban"
+                        label="IBAN"
                         type="text"
-                        errorMessage={errors.username}
-                        hookFormSpread={register("username", {
-                            required: "form-username-error",
+                        errorMessage={errors.iban}
+                        hookFormSpread={register("iban", {
+                            required: "form-iban-error",
+                            // pattern: {
+                            //     value: /^([A-Z]{2})([0-9]{2})([A-Z0-9]{9,30})$/i,
+                            //     message: "Please enter a valid IBAN"
+                            // }
                         })}
                     />
 

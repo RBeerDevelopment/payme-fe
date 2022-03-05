@@ -3,6 +3,7 @@ import { Modal } from "@components/modal/modal";
 import React from "react";
 import { PaymentMethod } from "../payment-methods-profile-card/payment-method";
 import { AddPaypalForm } from "./add-paypal-form";
+import { AddSepaForm } from "./add-sepa-form";
 
 interface Props {
     hideModal: () => void
@@ -35,6 +36,7 @@ export function AddPaymentMethodModal(props: Props): React.ReactElement {
                     </div>
                     <div className="pt-4">
                         {paymentOption.value === PaymentMethod.PayPal && <AddPaypalForm closeModal={hideModal} />}
+                        {paymentOption.value === PaymentMethod.Sepa   && <AddSepaForm closeModal={hideModal} />}
                     </div>
                 </div>
             </Modal>
