@@ -62,11 +62,13 @@ export function SendStateButton(props: Props): React.ReactElement {
     }
 
     return (
-        <button 
-            className={`${colorClasses} mx-${marginX} my-${marginY} text-white shadow-md hover:shadow-xl hover:scale-105 py-${paddingY} px-${paddingX} rounded-md ${width && `w-${width}`}`}
-            onClick={onClick}
-        >
-            {content}
-        </button>
+        <div className="w-full flex justify-center">
+            <button 
+                className={`${colorClasses} mx-${marginX} my-${marginY} text-white shadow-md hover:shadow-xl hover:scale-105 py-${paddingY} px-${paddingX} rounded-md ${width && `w-${width}`}`}
+                onClick={onClick}
+            >
+                {content}
+            </button>
+        </div>  
     );
 }

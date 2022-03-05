@@ -109,16 +109,13 @@ export function SigninForm(): React.ReactElement {
                             {t("form-captcha-error")}
                         </div>
                     )} */}
-
-            <div className="flex flex-row justify-center">
-                <SendStateButton
-                    onClick={handleSubmit(onSubmit)}
-                    errorText={t("form-button-error")}
-                    defaulText={t("signin-form-button")}
-                    state={state}
-                    width="1/3"
-                />
-            </div>
+            <SendStateButton
+                onClick={handleSubmit(onSubmit)}
+                errorText={t("form-button-error")}
+                defaulText={t("signin-form-button")}
+                state={state}
+                width="1/3"
+            />
         </form>
     );
 }

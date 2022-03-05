@@ -136,16 +136,13 @@ export function SignupForm(): React.ReactElement {
                             {t("form-captcha-error")}
                         </div>
                     )} */}
-
-            <div className="flex flex-row justify-center">
-                <SendStateButton
-                    onClick={handleSubmit(onSubmit)}
-                    errorText={t("form-button-error")}
-                    defaulText={t("signup-form-button")}
-                    width="1/3"
-                    state={state}
-                />
-            </div>
+            <SendStateButton
+                onClick={handleSubmit(onSubmit)}
+                errorText={t("form-button-error")}
+                defaulText={t("signup-form-button")}
+                width="1/3"
+                state={state}
+            />
             
         </form>
     );

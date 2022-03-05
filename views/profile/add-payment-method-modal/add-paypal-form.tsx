@@ -76,15 +76,13 @@ export function AddPaypalForm(props: Props): React.ReactElement {
                         </div>
                     )} */}
 
-                <div className="flex justify-center">
-                    <SendStateButton 
-                        defaulText="Save"
-                        errorText="Error"
-                        onClick={handleSubmit(onSubmit)}
-                        state={sendState}
-                        width="1/3"
-                    />
-                </div>
+                <SendStateButton 
+                    defaulText="Save"
+                    errorText="Error"
+                    onClick={handleSubmit(onSubmit)}
+                    state={sendState}
+                    width="1/3"
+                />
             </form>
         </ React.Fragment>
     );
