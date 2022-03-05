@@ -23,7 +23,7 @@ export function DropdownSelect<T>(props: Props<T>): React.ReactElement {
     
     return (
         <Listbox value={selectedOption} onChange={setSelectedOption}>
-            <div className="mb-2 font-thin">
+            <div className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-100">
                 <Listbox.Label>{label}</Listbox.Label>
             </div>
             <Listbox.Button className="relative w-full py-2 pl-3 pr-10 cursor-pointer text-left bg-gray-100 rounded-lg shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-green-300 focus-visible:ring-offset-2 focus-visible:border-green-500 sm:text-sm">

@@ -44,7 +44,7 @@ export function Layout(props: Props): React.ReactElement {
     return (
         <main>
             <div className="min-h-screen w-screen overflow-x-hidden bg-gray-200 flex flex-1 justify-between flex-col">
-                {showLogout && <div className="fixed top-2 right-2">
+                {showLogout && <div className="fixed top-2 right-6">
                     <TextButton onClick={handleLogout} marginY={4} >
                     Logout
                     </TextButton>
