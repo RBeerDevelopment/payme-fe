@@ -9,6 +9,7 @@ import { ApolloProvider } from "@apollo/client";
 import client from "../apollo-client";
 import { AuthProvider } from "context/auth-context";
 import { RouteGuard } from "@components/route-guard";
+import { AppProvider } from "context/app-context";
 
 function MyApp({ Component, pageProps }: AppProps): React.ReactElement {
     return (
@@ -16,14 +17,16 @@ function MyApp({ Component, pageProps }: AppProps): React.ReactElement {
             <Head>
                 <title>Pay Me</title>
                 <link rel='icon' href='/favicon.ico' />
-                <meta name="description" content="Full-Stack Web and Mobile Developer with more than 7 years of experience." />
+                {/* <meta name="description" content="Full-Stack Web and Mobile Developer with more than 7 years of experience." /> */}
             </Head>
             <AuthProvider>
-                <ApolloProvider client={client}>
-                    <RouteGuard>
-                        <Component {...pageProps} />
-                    </RouteGuard>
-                </ApolloProvider>
+                <AppProvider>
+                    <ApolloProvider client={client}>
+                        <RouteGuard>
+                            <Component {...pageProps} />
+                        </RouteGuard>
+                    </ApolloProvider>
+                </AppProvider>
             </ AuthProvider>
         </>
     );

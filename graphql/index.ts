@@ -1,2 +1,2 @@
 export * from "./user";
-export type { AuthData } from "./auth-data";
+export type { AuthResult } from "./auth-result";

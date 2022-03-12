@@ -4,16 +4,19 @@ import { MainProfileCard } from "@views/profile/main-profile-card";
 import { PaymentMethodsProfileCard } from "@views/profile/payment-methods-profile-card";
 import { UserData, UserQueryVars, USER_QUERY } from "@graphql/user";
 import React from "react";
+import { useAuthContext } from "context/auth-context/auth-context";
 
-interface Props {
-    username: string
-}
 
-export function Profile(props: Props): React.ReactElement {
+export function Profile(): React.ReactElement {
 
-    const { username } = props;
+    const { user: authUser } = useAuthContext();
+
+    if(!authUser) return <></>;
+
+    const { username } = authUser;
 
     const {data, loading, error } = useQuery<UserData, UserQueryVars>(USER_QUERY, { variables: { username }});
+
 
 
 

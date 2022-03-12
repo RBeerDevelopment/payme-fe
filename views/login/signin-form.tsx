@@ -45,7 +45,7 @@ export function SigninForm(): React.ReactElement {
 
             contextLogin(user, token);
 
-            router.push(`/profile/${user.username}`);
+            router.push("/profile");
         }
 
         setState(SendState.NotSend);
@@ -76,7 +76,7 @@ export function SigninForm(): React.ReactElement {
                         name="username"
                         label={t("form-username")}
                         type="text"
-                        errorMessage={t(errors.username)}
+                        errorMessage={errors.username && t(errors.username.message)}
                         hookFormSpread={register("username", {
                             required: "form-username-error",
                         })}
@@ -87,7 +87,7 @@ export function SigninForm(): React.ReactElement {
                         label={t("form-password")}
                         type="password"
                         autocomplete="password"
-                        errorMessage={t(errors.password)}
+                        errorMessage={errors.password && t(errors.password.message)}
                         hookFormSpread={register("password", {
                             required: "form-password-error",
                             minLength: { 

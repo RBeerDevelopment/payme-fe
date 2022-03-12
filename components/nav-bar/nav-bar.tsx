@@ -1,6 +1,7 @@
 import { TextButton } from "@components/text-button";
-import { UserIcon } from "@heroicons/react/outline";
+import { UserIcon } from "@heroicons/react/solid";
 import apolloClient from "apollo-client";
+import { useAppContext } from "context/app-context/app-context";
 import { useAuthContext } from "context/auth-context/auth-context";
 import { useRouter } from "next/router";
 import React from "react";
@@ -9,6 +10,8 @@ import React from "react";
 export function NavBar(): React.ReactElement {
 
     const router = useRouter();
+
+    const { title } = useAppContext();
 
     const { user, logout } = useAuthContext();
 
@@ -22,13 +25,13 @@ export function NavBar(): React.ReactElement {
     }
     
     return (
-        <div className="w-screen h-16 fixed top-0 bg-green-500 shadow-2xl z-50 flex flex-row justify-between items-center">
-            <h1 className="text-white text-3xl font-semibold ml-3">PayME</h1>
+        <div className="w-screen h-16 fixed top-0 z-50 flex flex-row justify-between items-center">
+            <div className="text-4xl p-2 pl-4">{title}</div>
             {user && 
             <div className="flex flex-row items-center">
-                <UserIcon className="mr-6 w-7 h-7 text-white cursor-pointer" onClick={handleProfileClick} />
+                <UserIcon className="mr-6 w-7 h-7 text-black cursor-pointer" onClick={handleProfileClick} />
                 <div className="mr-6">
-                    <TextButton bgColor="white" textColor="black" onClick={handleLogout} marginY={4} >
+                    <TextButton onClick={handleLogout} marginY={4} >
                     Logout
                     </TextButton>
                 </div>

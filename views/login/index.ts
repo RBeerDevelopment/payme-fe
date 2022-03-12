@@ -1,1 +1,1 @@
-export { LoginCard } from "./login-card";
+export { Login } from "./login";

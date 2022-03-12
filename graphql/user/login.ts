@@ -1,5 +1,5 @@
 import { gql } from "@apollo/client";
-import { AuthResult } from "@graphql/auth-data";
+import { AuthResult } from "@graphql/auth-result";
   
 export interface LoginVars {
     username: string

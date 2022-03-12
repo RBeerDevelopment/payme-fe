@@ -8,7 +8,7 @@ import { useTranslation } from "next-i18next";
 import { SignupForm } from "./signup-form";
 
 
-export function LoginCard() {
+export function Login() {
     
     const [actionType, setActionType] = React.useState<ActionType>(ActionType.Signin);
 

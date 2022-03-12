@@ -14,7 +14,6 @@ export function Layout(props: Props): React.ReactElement {
 
     const [isDarkMode, setDarkMode] = React.useState<boolean>(false);
 
-    
 
     React.useEffect(() => {
         if (isDarkMode) {
@@ -28,8 +27,6 @@ export function Layout(props: Props): React.ReactElement {
     function toggleDarkMode() {
         setDarkMode(!isDarkMode);
     }
-
-
 
     return (
         <main>

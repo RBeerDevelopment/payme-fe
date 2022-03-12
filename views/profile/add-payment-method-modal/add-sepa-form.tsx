@@ -16,6 +16,8 @@ export function AddSepaForm(props: Props): React.ReactElement {
 
     const { register, formState: { errors }, handleSubmit } = useForm();
 
+    console.log({ errors });
+
     const [sendState, setSendState] = React.useState<SendState>(SendState.NotSend);
 
     const [ addPaypal, { data, loading, error }] = useMutation<AddSepaData, AddSepaVars>(ADD_SEPA_MUTATION, { errorPolicy: "all" });
@@ -44,13 +46,13 @@ export function AddSepaForm(props: Props): React.ReactElement {
                         name="iban"
                         label="IBAN"
                         type="text"
-                        errorMessage={errors.iban}
+                        errorMessage={errors.iban && errors.iban.message}
                         hookFormSpread={register("iban", {
                             required: "form-iban-error",
-                            // pattern: {
-                            //     value: /^([A-Z]{2})([0-9]{2})([A-Z0-9]{9,30})$/i,
-                            //     message: "Please enter a valid IBAN"
-                            // }
+                            pattern: {
+                                value: /^([A-Z]{2})([0-9]{2})([A-Z0-9]{9,30})$/i,
+                                message: "Please enter a valid IBAN"
+                            }
                         })}
                     />
 
@@ -58,10 +60,8 @@ export function AddSepaForm(props: Props): React.ReactElement {
                         name="accountName"
                         label="Title"
                         type="text"
-                        errorMessage={errors.accountName}
-                        hookFormSpread={register("accountName", {
-                            required: "form-accountName-error",
-                        })}
+                        errorMessage=""
+                        hookFormSpread={register("accountName")}
                     />
                 </div>
 

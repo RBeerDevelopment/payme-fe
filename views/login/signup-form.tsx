@@ -37,7 +37,7 @@ export function SignupForm(): React.ReactElement {
             
             login(user, token);
 
-            router.push(`/profile/${user.username}`);
+            router.push("/profile");
         }
     }, [data, loading, error]);
 
@@ -70,7 +70,7 @@ export function SignupForm(): React.ReactElement {
                         label={t("form-firstName")}
                         type="text"
                         autocomplete="firstName"
-                        errorMessage={t(errors.firstName)}
+                        errorMessage={errors.firstName && t(errors.firstName.message.message)}
                         hookFormSpread={register("firstName", {
                             required: "form-first-name-error"
                         })}
@@ -81,7 +81,7 @@ export function SignupForm(): React.ReactElement {
                         label={t("form-lastName")}
                         type="text"
                         autocomplete="lastName"
-                        errorMessage={t(errors.lastName)}
+                        errorMessage={errors.lastName && t(errors.lastName.message)}
                         hookFormSpread={register("lastName", {
                             required: "form-last-name-error"
                         })}
@@ -92,7 +92,7 @@ export function SignupForm(): React.ReactElement {
                         label={t("form-email")}
                         type="email"
                         autocomplete="email"
-                        errorMessage={t(errors.email)}
+                        errorMessage={errors.email && t(errors.email.message)}
                         hookFormSpread={register("email", {
                             required: "form-email-error",
                             pattern: {
@@ -106,7 +106,7 @@ export function SignupForm(): React.ReactElement {
                         name="username"
                         label={t("form-username")}
                         type="text"
-                        errorMessage={t(errors.username)}
+                        errorMessage={errors.username && t(errors.username.message)}
                         hookFormSpread={register("username", {
                             required: "form-username-error",
                         })}
@@ -117,7 +117,7 @@ export function SignupForm(): React.ReactElement {
                         label={t("form-password")}
                         type="password"
                         autocomplete="password"
-                        errorMessage={t(errors.password)}
+                        errorMessage={errors.password && t(errors.password.message)}
                         hookFormSpread={register("password", {
                             required: "form-password-error",
                             minLength: 8

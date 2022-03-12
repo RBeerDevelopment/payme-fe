@@ -2,23 +2,24 @@ import React from "react";
 
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { Layout } from "@components/layout";
-import { useRouter } from "next/router";
 import { ClientOnly } from "@components/client-only";
 import { Profile } from "@views/profile";
+import { useAppContext } from "context/app-context/app-context";
 
-export default function Login(): React.ReactElement {
+export default function ProfilePage(): React.ReactElement {
 
-    const router = useRouter();
-    const { username } = router.query;
+    const { setTitle } = useAppContext();
 
-    const usernameString = `${username}`;
+    React.useEffect(() => {
+        setTitle("Profile");
+    }, []);
 
     return (
         <Layout>
             <div className="h-full">
-                <p className="text-4xl p-8 pb-4">Profile</p>
+                {/* <p className="text-4xl p-8 pt-0 pb-4">Profile</p> */}
                 <ClientOnly>
-                    <Profile username={usernameString} />
+                    <Profile />
                 </ClientOnly>
             </div>
         </Layout>
