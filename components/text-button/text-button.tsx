@@ -28,7 +28,7 @@ export function TextButton(props: Props): React.ReactElement {
     } = props;
     return (
         <button 
-            className={`mx-${marginX} my-${marginY} bg-${bgColor} shadow-md hover:shadow-xl hover:scale-105 text-${textColor} py-${paddingY} px-${paddingX} rounded-md ${width && `w-${width}`}`}
+            className={`mx-${marginX} my-${marginY} bg-${bgColor} shadow-md hover:shadow-xl active:shadow-sm active:scale-95 hover:scale-105 text-${textColor} py-${paddingY} px-${paddingX} rounded-md ${width && `w-${width}`}`}
             onClick={onClick}
         >
             {children}

@@ -19,6 +19,10 @@ export function NavBar(): React.ReactElement {
         router.push("/profile");
     }
 
+    function handleSignin() {
+        router.push("/login");
+    }
+
     function handleLogout() {
         apolloClient.clearStore();
         logout();
@@ -27,15 +31,26 @@ export function NavBar(): React.ReactElement {
     return (
         <div className="w-screen h-16 fixed top-0 z-50 flex flex-row justify-between items-center">
             <div className="text-4xl p-2 pl-4">{title}</div>
-            {user && 
+             
             <div className="flex flex-row items-center">
-                <UserIcon className="mr-6 w-7 h-7 text-black cursor-pointer" onClick={handleProfileClick} />
-                <div className="mr-6">
-                    <TextButton onClick={handleLogout} marginY={4} >
-                    Logout
-                    </TextButton>
-                </div>
-            </div>}
+                {user &&
+                <>
+                    <UserIcon className="mr-6 w-7 h-7 text-black cursor-pointer" onClick={handleProfileClick} />
+                    <div className="mr-6">
+                        <TextButton onClick={handleLogout} marginY={4} >
+                            Logout
+                        </TextButton>
+                    </div>
+                </>
+                }
+                {!user && router.pathname !== "/login" && 
+                    <div className="mr-6">
+                        <TextButton onClick={handleSignin} marginY={4} marginX={4}>
+                            Sign In
+                        </TextButton>
+                    </div>
+                }
+            </div>
         </ div>
     );
 }

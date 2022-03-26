@@ -7,6 +7,8 @@ interface Props {
     children: React.ReactNode
 }
 
+export const publicPaths = ["/", "/login"];
+
 export function RouteGuard(props: Props): React.ReactElement {
     
     const { children } = props;
@@ -19,9 +21,7 @@ export function RouteGuard(props: Props): React.ReactElement {
     
     React.useEffect(() => {
 
-        console.log({ token, loading, isTokenValid });
-
-        if(pathname === "/login") {
+        if(publicPaths.includes(pathname)) {
             return;
         }
 
@@ -31,14 +31,10 @@ export function RouteGuard(props: Props): React.ReactElement {
 
         if(token) {
 
-            console.log("tokenExists", { isTokenValid });
-
-
             if(isTokenValid) {
                 return;
             }
 
-            push("/login");
         }
 
         push("/login");

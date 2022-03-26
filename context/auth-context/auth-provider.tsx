@@ -6,8 +6,8 @@ interface Props {
     children: React.ReactNode
 }
 
-const tokenKey = "token";
-const userKey = "user";
+export const tokenKey = "token";
+export const userKey = "user";
 
 export function AuthProvider(props: Props): React.ReactElement {
 
@@ -49,7 +49,7 @@ export function AuthProvider(props: Props): React.ReactElement {
     }, []);
 
     React.useEffect(() => {
-        if(user && token ) {
+        if(user && token) {
             localStorage.setItem(tokenKey, token);
             localStorage.setItem(userKey, JSON.stringify(user));
             return;

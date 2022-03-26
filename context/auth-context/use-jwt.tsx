@@ -1,4 +1,5 @@
 import React from "react";
+import { tokenKey, userKey } from "./auth-provider";
 
 interface JWT {
     iss?: string
@@ -13,6 +14,13 @@ interface JWT {
 export function useJwt(token: string | undefined): boolean {
 
     const isValid = React.useMemo(() => checkIsTokenValid(token), [token]);
+
+    React.useEffect(() => {
+        if(!isValid) {
+            localStorage.removeItem(userKey);
+            localStorage.removeItem(tokenKey);
+        }
+    }, [isValid]);
 
     return isValid;
 }
