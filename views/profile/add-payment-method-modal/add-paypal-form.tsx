@@ -55,9 +55,7 @@ export function AddPaypalForm(props: Props): React.ReactElement {
                         label="Title"
                         type="text"
                         errorMessage={errors.accountName}
-                        hookFormSpread={register("accountName", {
-                            required: "form-accountName-error",
-                        })}
+                        hookFormSpread={register("accountName", {})}
                     />
                 </div>
 

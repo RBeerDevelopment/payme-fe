@@ -1,6 +1,5 @@
 import { SectionHeader, SectionLayout } from "@components/section";
 import React from "react";
-import { CheckCircleIcon } from "@heroicons/react/solid";
 import { StatusListItem } from "@components/status-list/status-list-item";
 import { ListItemStatus } from "@components/status-list/list-item-status";
 

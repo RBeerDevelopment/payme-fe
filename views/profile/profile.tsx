@@ -15,7 +15,7 @@ export function Profile(): React.ReactElement {
 
     const { username } = authUser;
 
-    const {data, loading, error } = useQuery<UserData, UserQueryVars>(USER_QUERY, { variables: { username }});
+    const { data, loading, error } = useQuery<UserData, UserQueryVars>(USER_QUERY, { variables: { username }});
 
 
 

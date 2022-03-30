@@ -1,26 +1,40 @@
+import { ColoredCircleLetter } from "@components/colored-circle-letter/colored-circle-letter";
 import { Paypal } from "@graphql/paypal/paypal";
+import { Sepa } from "@graphql/sepa/sepa";
 import React from "react";
-import { PaymentMethod } from "./payment-method";
 
 interface Props {
-    paymentMethodType: PaymentMethod
-    paymentMethods: Paypal[]
+    paymentMethods: Paypal[] | Sepa[]
 }
 
 export function PaymentOptionSection(props: Props): React.ReactElement {
 
-    const { paymentMethodType, paymentMethods } = props;
+    const { paymentMethods } = props;
 
-    console.log({ paymentMethods});
     
     return (
         <>
             {paymentMethods.map(pm => {
+                const colorLetter =  instanceOfPaypal(pm) ?
+                    <ColoredCircleLetter letter="P" color="paypal" /> :
+                    <ColoredCircleLetter letter="S" color="sepa" />;
+                
+                console.log(pm);
                 return (
-                    <div key={pm.id}>
-                        {pm.accountName}
+                    <div className="text-lg flex flex-row space-x-4 mb-6" key={pm.id + pm.accountName}>
+                        <div className="mt-2">
+                            {colorLetter}
+                        </div>
+                        <div>
+                            <p className="text-lg font-semibold -mb-2">{pm.accountName || (pm as Sepa).iban || (pm as Paypal).username}</p>
+                            {pm.accountName && <p className="">{(pm as Sepa).iban || (pm as Paypal).username}</p>}
+                        </div>
                     </div>);
             })}
         </>
     );
+}
+
+function instanceOfPaypal(object: any): object is Paypal {
+    return "username" in object;
 }

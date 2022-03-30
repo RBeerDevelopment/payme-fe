@@ -1,3 +1,4 @@
+
 module.exports = {
     content: [
         "./pages/**/*.{js,ts,jsx,tsx}",
@@ -7,6 +8,13 @@ module.exports = {
     ],
     darkMode: "class", // or 'media' or 'class'
     theme: {
+        extend: {
+            colors: {
+                "paypal": "#0079C1",
+                "sepa": "#76B947"
+            }
+
+        }
     },
     variants: {
         extend: {

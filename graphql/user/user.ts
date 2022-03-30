@@ -33,6 +33,7 @@ export const USER_QUERY = gql`
             sepa {
                 id
                 accountName
+                iban
             }
             paypal {
                 id
