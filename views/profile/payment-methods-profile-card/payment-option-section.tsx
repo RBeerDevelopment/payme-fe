@@ -16,8 +16,8 @@ export function PaymentOptionSection(props: Props): React.ReactElement {
         <>
             {paymentMethods.map(pm => {
                 const colorLetter =  instanceOfPaypal(pm) ?
-                    <ColoredCircleLetter letter="P" color="paypal" /> :
-                    <ColoredCircleLetter letter="S" color="sepa" />;
+                    <ColoredCircleLetter letter="P" color="bg-paypal" /> :
+                    <ColoredCircleLetter letter="S" color="bg-sepa" />;
                 
                 console.log(pm);
                 return (

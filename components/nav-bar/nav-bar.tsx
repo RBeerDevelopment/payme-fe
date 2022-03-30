@@ -29,7 +29,7 @@ export function NavBar(): React.ReactElement {
     }
     
     return (
-        <div className="w-screen h-16 fixed top-0 z-50 flex flex-row justify-between items-center">
+        <div className="w-screen h-16 absolute top-0 z-50 flex flex-row justify-between items-center">
             <div className="text-4xl p-2 pl-4">{title}</div>
              
             <div className="flex flex-row items-center">

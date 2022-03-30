@@ -1,5 +1,6 @@
 import { SectionHeader, SectionLayout } from "@components/section";
 import Image from "next/image";
+import transferImage from "/public/images/transfermoney.svg";
 
 import React from "react";
 
@@ -11,7 +12,7 @@ export function SectionWelcome(): React.ReactElement {
     />;
 
     const content = (
-        <Image src="/images/undraw_transfer_money.svg" layout="fill" />
+        <Image src={transferImage} layout="fill" />
     );
     
     return (
