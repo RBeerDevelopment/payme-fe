@@ -1,7 +1,7 @@
 import { DropdownSelect } from "@components/dropdown-select/dropdown-select";
 import { Modal } from "@components/modal/modal";
 import React from "react";
-import { PaymentMethod } from "../payment-methods-profile-card/payment-method";
+import { SupportedPaymentMethod } from "../payment-methods-profile-card/supported-payment-method";
 import { AddPaypalForm } from "./add-paypal-form";
 import { AddSepaForm } from "./add-sepa-form";
 
@@ -12,11 +12,11 @@ interface Props {
 
 const availablePaymentMethods = [
     {
-        value: PaymentMethod.PayPal,
+        value: SupportedPaymentMethod.PayPal,
         label: "PayPal"
     },
     {
-        value: PaymentMethod.Sepa,
+        value: SupportedPaymentMethod.Sepa,
         label: "SEPA"
     }
 ];
@@ -35,8 +35,8 @@ export function AddPaymentMethodModal(props: Props): React.ReactElement {
                         <DropdownSelect options={availablePaymentMethods} selectedOption={paymentOption} label="Type" setSelectedOption={setPaymentOption} />
                     </div>
                     <div className="pt-4">
-                        {paymentOption.value === PaymentMethod.PayPal && <AddPaypalForm closeModal={hideModal} />}
-                        {paymentOption.value === PaymentMethod.Sepa   && <AddSepaForm closeModal={hideModal} />}
+                        {paymentOption.value === SupportedPaymentMethod.PayPal && <AddPaypalForm closeModal={hideModal} />}
+                        {paymentOption.value === SupportedPaymentMethod.Sepa   && <AddSepaForm closeModal={hideModal} />}
                     </div>
                 </div>
             </Modal>

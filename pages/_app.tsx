@@ -12,6 +12,7 @@ import { RouteGuard } from "@components/route-guard";
 import { AppProvider } from "context/app-context";
 
 function MyApp({ Component, pageProps }: AppProps): React.ReactElement {
+
     return (
         <>
             <Head>

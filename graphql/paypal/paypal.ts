@@ -4,3 +4,7 @@ export interface Paypal {
     accountName: string
 }
 
+
+export function instanceOfPaypal(object: any): object is Paypal {
+    return "username" in object;
+}
