@@ -4,7 +4,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { Layout } from "@components/layout";
 import { ClientOnly } from "@components/client-only";
 import { Profile } from "@views/profile";
-import { useAppContext } from "context/app-context/app-context";
+import { useAppContext } from "context";
 
 export default function ProfilePage(): React.ReactElement {
 

@@ -1,4 +1,4 @@
-import { EmptyFn } from "@components/text-button";
+import { EmptyFn } from "x";
 import React from "react";
 
 interface Props {

@@ -1,4 +1,4 @@
-import { TextButton } from "@components/text-button";
+import { TextButton } from "@components/button/text-button";
 import { UserIcon } from "@heroicons/react/solid";
 import apolloClient from "apollo-client";
 import { useAppContext } from "context/app-context/app-context";

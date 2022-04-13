@@ -1,7 +1,7 @@
 import React from "react";
 
 import Image from "next/image";
-import notTheDroids from "../public/images/NotTheDroids.webp";
+import notTheDroids from "/public/images/NotTheDroids.webp";
 import { Layout } from "@components/layout";
 
 export default function Custom404() {

@@ -1,17 +1,17 @@
-import { User } from "@graphql/user";
+import { AuthUser } from "@graphql/user";
 
 export interface AuthState {
-    user?: User
+    user?: AuthUser
     token?: string
     // helper value to prevent errors with RouteGuard after reloads
     loading: boolean
-    login: (user: User, token: string) => void
+    login: (user: AuthUser, token: string) => void
     logout: () => void
 }
 
 export const defaultAuthState: AuthState = {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     loading: true,
-    login: (user: User, token: string) => { return; },
+    login: (user: AuthUser, token: string) => { return; },
     logout: () => { return; }
 };

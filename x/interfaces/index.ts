@@ -1,0 +1,1 @@
+export type { EmptyFn } from "./empty-fn";

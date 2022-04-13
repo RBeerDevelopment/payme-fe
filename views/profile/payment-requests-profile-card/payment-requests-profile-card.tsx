@@ -1,11 +1,10 @@
-import { User } from "../../../graphql";
+import { User } from "@graphql/user";
 import React from "react";
 import { ProfileCard } from "@components/cards";
-import { TextButton } from "@components/text-button";
+import { TextButton } from "@components/button";
 import { PaymentRequestSection } from "./payment-request-section";
-import { AddPaymentRequestModal } from "./add-payment-request-modal/add-payment-request-modal";
-import { ConfirmModal } from "@components/modal";
-import { Payment } from "@graphql/payment/payment";
+import { AddPaymentRequestModal } from "./add-payment-request-modal";
+import { Payment } from "@graphql/payment";
 
 
 interface Props {

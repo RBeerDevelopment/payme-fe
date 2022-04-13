@@ -1,13 +1,12 @@
 import { useMutation } from "@apollo/client";
-import { SignupData, SignupMutation, SignupVars } from "../../graphql";
+import { SignupData, SignupMutation, SignupVars } from "@graphql/user";
 import router from "next/router";
 import React from "react";
 import { FieldValues, useForm } from "react-hook-form";
-import { SendState } from "../../components/send-state-button/send-state";
+import { SendState, SendStateButton } from "@components/button";
 import { FormHookInput } from "@components/form-hook-inputs/form-hook-input";
 import { useTranslation } from "next-i18next";
-import { useAuthContext } from "context/auth-context/auth-context";
-import { SendStateButton } from "@components/send-state-button";
+import { useAuthContext } from "context";
 
 
 export function SignupForm(): React.ReactElement {

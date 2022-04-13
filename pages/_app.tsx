@@ -7,9 +7,8 @@ import { appWithTranslation } from "next-i18next";
 
 import { ApolloProvider } from "@apollo/client";
 import client from "../apollo-client";
-import { AuthProvider } from "context/auth-context";
+import { AuthProvider, AppProvider } from "context";
 import { RouteGuard } from "@components/route-guard";
-import { AppProvider } from "context/app-context";
 
 function MyApp({ Component, pageProps }: AppProps): React.ReactElement {
 

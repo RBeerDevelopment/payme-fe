@@ -1,4 +1,4 @@
-import { User } from "@graphql/user";
+import { AuthUser } from "@graphql/user";
 import React from "react";
 import { AuthContext } from "./auth-context";
 
@@ -13,11 +13,11 @@ export function AuthProvider(props: Props): React.ReactElement {
 
     const { children } = props;
 
-    const [user, setUser] = React.useState<User | undefined>();
+    const [user, setUser] = React.useState<AuthUser | undefined>();
     const [token, setToken] = React.useState<string | undefined>();
     const [loading, setLoading] = React.useState(true);
 
-    function login(newUser: User, newToken: string) {
+    function login(newUser: AuthUser, newToken: string) {
         setUser(newUser);
         setToken(newToken);
     }

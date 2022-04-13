@@ -1,7 +1,7 @@
-import { User } from "../../../graphql";
+import { User } from "@graphql/user";
 import React from "react";
 import { AddPaymentMethodModal } from "./add-payment-method-modal";
-import { TextButton } from "@components/text-button";
+import { TextButton } from "@components/button";
 import { PaymentOptionSection } from "./payment-option-section";
 import { ProfileCard } from "@components/cards";
 

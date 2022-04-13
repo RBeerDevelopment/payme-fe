@@ -1,13 +1,12 @@
-import { useMutation } from "@apollo/client";
-import { LoginData, LoginMutation, LoginVars } from "../../graphql";
-import router from "next/router";
 import React from "react";
+import router from "next/router";
+import { useMutation } from "@apollo/client";
+import { LoginData, LoginMutation, LoginVars } from "@graphql/user";
 import { FieldValues, useForm } from "react-hook-form";
-import { SendState } from "../../components/send-state-button/send-state";
-import { FormHookInput } from "@components/form-hook-inputs/form-hook-input";
+import { SendState, SendStateButton } from "@components/button";
+import { FormHookInput } from "@components/form-hook-inputs";
 import { useTranslation } from "next-i18next";
-import { useAuthContext } from "context/auth-context/auth-context";
-import { SendStateButton } from "@components/send-state-button";
+import { useAuthContext } from "context";
 
 
 export function SigninForm(): React.ReactElement {
@@ -37,8 +36,6 @@ export function SigninForm(): React.ReactElement {
         }
 
         if(data) {
-
-            console.log("received data");
             const { token, user } = data.login; 
             
             setState(SendState.Success);

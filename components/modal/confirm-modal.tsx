@@ -1,5 +1,5 @@
-import { TextButton } from "@components/text-button";
-import { EmptyFn } from "@components/text-button/empty-fn";
+import { TextButton } from "@components/button/text-button";
+import { EmptyFn } from "x";
 import React from "react";
 import { Modal } from "./modal";
 

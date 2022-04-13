@@ -1,15 +1,13 @@
 import React from "react";
-import { FormHookInput } from "@components/form-hook-inputs/form-hook-input";
-import { EmptyFn } from "@components/text-button";
+import { FormHookInput } from "@components/form-hook-inputs";
+import { EmptyFn } from "x";
 import { FieldValues, useForm } from "react-hook-form";
 import { useMutation } from "@apollo/client";
-import { AddPayPalData, AddPayPalVars, ADD_PAYPAL_MUTATION } from "@graphql/paypal/add-paypal";
-import { SendState, SendStateButton } from "@components/send-state-button";
-import { DropdownSelect } from "@components/dropdown-select/dropdown-select";
-import { AddPaymentData, AddPaymentVars, ADD_PAYMENT_MUTATION } from "@graphql/payment/add-payment";
-import { cacheSlot, Reference } from "@apollo/client/cache";
-import { useAuthContext } from "context/auth-context/auth-context";
-import { User, UserData, USER_QUERY } from "@graphql/user";
+import { SendState, SendStateButton } from "@components/button";
+import { DropdownSelect } from "@components/dropdown-select";
+import { AddPaymentData, AddPaymentVars, ADD_PAYMENT_MUTATION } from "@graphql/payment";
+import { useAuthContext } from "context";
+import { UserData, USER_QUERY } from "@graphql/user";
 
 interface Props {
     closeModal: EmptyFn

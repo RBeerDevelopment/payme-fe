@@ -1,4 +1,4 @@
-import { IconButton } from "@components/icon-button/icon-button";
+import { IconButton } from "@components/button";
 import React from "react";
 import { TrashIcon, PencilAltIcon } from "@heroicons/react/outline";
 

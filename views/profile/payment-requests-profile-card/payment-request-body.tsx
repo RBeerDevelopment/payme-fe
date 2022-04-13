@@ -1,7 +1,7 @@
-import { IconButton } from "@components/icon-button/icon-button";
+import { IconButton } from "@components/button";
 import React from "react";
 import { CheckCircleIcon, TrashIcon, PencilAltIcon, MinusCircleIcon } from "@heroicons/react/outline";
-import { Payment } from "@graphql/payment/payment";
+import { Payment } from "@graphql/payment";
 
 interface Props {
     payment: Payment

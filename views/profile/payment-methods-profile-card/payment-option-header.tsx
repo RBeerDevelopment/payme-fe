@@ -1,7 +1,7 @@
-import { ColoredCircleLetter } from "@components/colored-circle-letter/colored-circle-letter";
-import { PaymentMethod } from "@graphql/payment-method";
-import { instanceOfPaypal, Paypal } from "@graphql/paypal/paypal";
-import { Sepa } from "@graphql/sepa/sepa";
+import { ColoredCircleLetter } from "@components/colored-circle-letter";
+import { PaymentMethod } from "@graphql/types";
+import { instanceOfPaypal, Paypal } from "@graphql/paypal";
+import { Sepa } from "@graphql/sepa";
 import React from "react";
 
 interface Props {

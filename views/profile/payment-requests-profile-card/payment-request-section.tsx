@@ -1,14 +1,20 @@
-import { Accordion } from "@components/accordion/accordion";
-import { Payment } from "@graphql/payment/payment";
+import { Accordion } from "@components/accordion";
+import { Payment } from "@graphql/payment";
 import React from "react";
 import { CheckCircleIcon, DotsCircleHorizontalIcon } from "@heroicons/react/solid";
 import { ConfirmModal } from "@components/modal";
 import { useMutation } from "@apollo/client";
-import { DeletePaymentData, DeletePaymentVars, DELETE_PAYMENT_MUTATION } from "@graphql/payment/delete-payment";
+import { 
+    DeletePaymentData, 
+    DeletePaymentVars, 
+    DELETE_PAYMENT_MUTATION, 
+    SetPaymentPaidData, 
+    SetPaymentPaidVars, 
+    SET_PAYMENT_PAID_MUTATION 
+} from "@graphql/payment";
 import { UserData, USER_QUERY } from "@graphql/user";
-import { useAuthContext } from "context/auth-context/auth-context";
+import { useAuthContext } from "context";
 import { PaymentRequestBody } from "./payment-request-body";
-import { SetPaymentPaidData, SetPaymentPaidVars, SET_PAYMENT_PAID_MUTATION } from "@graphql/payment/set-payment-paid";
 
 interface Props {
     payments: Payment[]

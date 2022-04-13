@@ -1,4 +1,4 @@
-import { Modal } from "@components/modal/modal";
+import { Modal } from "@components/modal";
 import React from "react";
 import { AddPaymentRequestForm } from "./add-payment-request-form";
 

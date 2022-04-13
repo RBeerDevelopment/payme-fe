@@ -1,12 +1,11 @@
 import { useMutation } from "@apollo/client";
-import { Accordion } from "@components/accordion/accordion";
+import { Accordion } from "@components/accordion";
 import { ConfirmModal } from "@components/modal";
-import { PaymentMethod } from "@graphql/payment-method";
-import { DeletePaypalData, DeletePaypalVars, DELETE_PAYPAL_MUTATION } from "@graphql/paypal/delete-paypal";
-import { instanceOfPaypal } from "@graphql/paypal/paypal";
-import { DeleteSepaData, DeleteSepaVars, DELETE_SEPA_MUTATION } from "@graphql/sepa/delete-sepa";
+import { PaymentMethod } from "@graphql/types";
+import { DeletePaypalData, DeletePaypalVars, DELETE_PAYPAL_MUTATION, instanceOfPaypal } from "@graphql/paypal";
+import { DeleteSepaData, DeleteSepaVars, DELETE_SEPA_MUTATION } from "@graphql/sepa";
 import { UserData, USER_QUERY } from "@graphql/user";
-import { useAuthContext } from "context/auth-context/auth-context";
+import { useAuthContext } from "context";
 import React from "react";
 import { PaymentOptionBody } from "./payment-option-body";
 import { PaymentOptionHeader } from "./payment-option-header";

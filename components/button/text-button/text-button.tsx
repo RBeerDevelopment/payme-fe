@@ -1,5 +1,5 @@
 import React from "react";
-import { EmptyFn } from "./empty-fn";
+import { EmptyFn } from "x";
 
 interface Props {
     children:  string

@@ -1,12 +1,12 @@
 import { useQuery } from "@apollo/client";
-import { LoadingIndicator } from "@components/loading-indicator/loading-indicator";
-import { MainProfileCard } from "@views/profile/main-profile-card";
-import { PaymentMethodsProfileCard } from "@views/profile/payment-methods-profile-card";
-import { PaymentRequestsProfileCard } from "@views/profile/payment-requests-profile-card";
+import { LoadingIndicator } from "@components/loading-indicator";
+import { MainProfileCard } from "./main-profile-card";
+import { PaymentMethodsProfileCard } from "./payment-methods-profile-card";
+import { PaymentRequestsProfileCard } from "./payment-requests-profile-card";
 
 import { UserData, UserQueryVars, USER_QUERY } from "@graphql/user";
 import React from "react";
-import { useAuthContext } from "context/auth-context/auth-context";
+import { useAuthContext } from "context";
 
 
 export function Profile(): React.ReactElement {

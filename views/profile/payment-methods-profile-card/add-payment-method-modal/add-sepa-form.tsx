@@ -1,12 +1,12 @@
 import React from "react";
-import { FormHookInput } from "@components/form-hook-inputs/form-hook-input";
-import { EmptyFn } from "@components/text-button";
+import { FormHookInput } from "@components/form-hook-inputs";
+import { EmptyFn } from "x";
 import { FieldValues, useForm } from "react-hook-form";
 import { useMutation } from "@apollo/client";
-import { SendState, SendStateButton } from "@components/send-state-button";
-import { AddSepaData, AddSepaVars, ADD_SEPA_MUTATION } from "@graphql/sepa/add-sepa";
+import { SendState, SendStateButton } from "@components/button";
+import { AddSepaData, AddSepaVars, ADD_SEPA_MUTATION } from "@graphql/sepa";
 import { UserData, USER_QUERY } from "@graphql/user";
-import { useAuthContext } from "context/auth-context/auth-context";
+import { useAuthContext } from "context";
 
 interface Props {
     closeModal: EmptyFn

@@ -1,4 +1,4 @@
-import { User } from "../../../graphql";
+import { User } from "@graphql/user";
 import React from "react";
 import Image from "next/image";
 import { ProfileCard } from "@components/cards";
