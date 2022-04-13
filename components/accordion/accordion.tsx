@@ -27,7 +27,7 @@ export const Accordion: React.FC<AccordionProps> = ({ title, content }) => {
                 className="py-2 box-border appearance-none cursor-pointer focus:outline-none flex items-center justify-between"
                 onClick={toggleAccordion}
             >
-                <p className="inline-block text-footnote light">{title}</p>
+                {title}
                 <div className={`${rotate} inline-block text-black w-6 h-6`}>
                     <ChevronDownIcon  />
                 </div >

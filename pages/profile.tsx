@@ -17,7 +17,6 @@ export default function ProfilePage(): React.ReactElement {
     return (
         <Layout>
             <div className="h-full">
-                {/* <p className="text-4xl p-8 pt-0 pb-4">Profile</p> */}
                 <ClientOnly>
                     <Profile />
                 </ClientOnly>

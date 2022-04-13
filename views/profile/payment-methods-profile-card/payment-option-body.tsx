@@ -1,20 +1,22 @@
 import { IconButton } from "@components/icon-button/icon-button";
-import { PaymentMethod } from "@graphql/payment-method";
 import React from "react";
 import { TrashIcon, PencilAltIcon } from "@heroicons/react/outline";
 
-interface Props {
-    paymentMethod: PaymentMethod
+interface Props<T> {
+    subject: T
+    onDelete: (subject: T) => void
+    onEdit: (subject: T) => void
+
 }
 
-export function PaymentOptionBody(props: Props): React.ReactElement {
+export function PaymentOptionBody<T>(props: Props<T>): React.ReactElement {
 
-    const { paymentMethod } = props;
+    const { subject, onDelete, onEdit } = props;
     return (
         <div className="m-2 flex flew-row justify-evenly">
-            <IconButton text="Edit" icon={<PencilAltIcon className="text-white" />} bgColor="bg-gray-700" onClick={() => {return;}} />
+            <IconButton text="Edit" icon={<PencilAltIcon className="text-white" />} bgColor="bg-gray-700" onClick={() => { onEdit(subject); }} />
 
-            <IconButton text="Delete" icon={<TrashIcon className="text-white" />} bgColor="bg-red-600" onClick={() => {return;}} />
+            <IconButton text="Delete" icon={<TrashIcon className="text-white" />} bgColor="bg-red-600" onClick={() => { onDelete(subject); }} />
         </ div>
     );
 }

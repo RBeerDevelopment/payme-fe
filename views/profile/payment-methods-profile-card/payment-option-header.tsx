@@ -17,13 +17,11 @@ export function PaymentOptionHeader(props: Props): React.ReactElement {
         <ColoredCircleLetter letter="S" color="bg-sepa" />;
 
     return (
-        <div className="text-lg flex flex-row space-x-4 mb-6" key={paymentMethod.id + paymentMethod.accountName}>
-            <div className="mt-2">
-                {colorLetter}
-            </div>
+        <div className="text-lg flex flex-row space-x-4 ml-2 my-3 h-full items-center" key={paymentMethod.id}>
+            {colorLetter}
             <div>
-                <p className="text-lg text-left font-semibold">{paymentMethod.accountName || (paymentMethod as Sepa).iban || (paymentMethod as Paypal).username}</p>
-                {paymentMethod.accountName && <p className="">{(paymentMethod as Sepa).iban || (paymentMethod as Paypal).username}</p>}
+                <p className="text-lg text-left font-semibold flex flex-row h-full items-center">{paymentMethod.accountName || (paymentMethod as Sepa).iban || (paymentMethod as Paypal).username}</p>
+                {paymentMethod.accountName && <p>{(paymentMethod as Sepa).iban || (paymentMethod as Paypal).username}</p>}
             </div>
         </div>
     );

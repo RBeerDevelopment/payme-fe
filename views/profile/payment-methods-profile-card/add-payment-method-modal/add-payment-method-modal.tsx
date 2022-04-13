@@ -1,7 +1,7 @@
 import { DropdownSelect } from "@components/dropdown-select/dropdown-select";
 import { Modal } from "@components/modal/modal";
 import React from "react";
-import { SupportedPaymentMethod } from "../payment-methods-profile-card/supported-payment-method";
+import { SupportedPaymentMethod } from "../supported-payment-method";
 import { AddPaypalForm } from "./add-paypal-form";
 import { AddSepaForm } from "./add-sepa-form";
 

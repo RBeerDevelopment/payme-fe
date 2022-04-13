@@ -2,6 +2,8 @@ import { useQuery } from "@apollo/client";
 import { LoadingIndicator } from "@components/loading-indicator/loading-indicator";
 import { MainProfileCard } from "@views/profile/main-profile-card";
 import { PaymentMethodsProfileCard } from "@views/profile/payment-methods-profile-card";
+import { PaymentRequestsProfileCard } from "@views/profile/payment-requests-profile-card";
+
 import { UserData, UserQueryVars, USER_QUERY } from "@graphql/user";
 import React from "react";
 import { useAuthContext } from "context/auth-context/auth-context";
@@ -15,10 +17,7 @@ export function Profile(): React.ReactElement {
 
     const { username } = authUser;
 
-    const { data, loading, error } = useQuery<UserData, UserQueryVars>(USER_QUERY, { variables: { username }});
-
-
-
+    const { data, loading, error } = useQuery<UserData, UserQueryVars>(USER_QUERY, { variables: { username, onlyActive: true }});
 
     if(loading) return (<LoadingIndicator />);
     if(error) return (<p>ERROR...</p>);
@@ -37,6 +36,7 @@ export function Profile(): React.ReactElement {
                 </div>
                 <div className="col-span-2">
                     <PaymentMethodsProfileCard user={user} />
+                    <PaymentRequestsProfileCard user={user} />
                 </div>
             </ div>
         </>

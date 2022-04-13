@@ -4,7 +4,7 @@ import router from "next/router";
 import React from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import { SendState } from "../../components/send-state-button/send-state";
-import { FormHookInput } from "@components/form-hook-input/form-hook-input";
+import { FormHookInput } from "@components/form-hook-inputs/form-hook-input";
 import { useTranslation } from "next-i18next";
 import { useAuthContext } from "context/auth-context/auth-context";
 import { SendStateButton } from "@components/send-state-button";
