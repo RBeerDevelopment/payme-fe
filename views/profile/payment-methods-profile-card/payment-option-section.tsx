@@ -66,9 +66,21 @@ export function PaymentOptionSection(props: Props): React.ReactElement {
         const vars = { variables: { id: pm.id }};
 
         if(instanceOfPaypal(pm)) {
-            deletePaypal(vars);
+            deletePaypal({ ...vars,
+                optimisticResponse: {
+                    deletePaypal: {
+                        id: pm.id
+                    }
+                }
+            });
         } else {
-            deleteSepa(vars);
+            deleteSepa({ ...vars,
+                optimisticResponse: {
+                    deleteSepa: {
+                        id: pm.id
+                    }
+                }
+            });
 
         }
     }

@@ -1,7 +1,6 @@
 import { Accordion } from "@components/accordion/accordion";
 import { Payment } from "@graphql/payment/payment";
 import React from "react";
-import { PaymentOptionBody } from "../payment-methods-profile-card/payment-option-body";
 import { CheckCircleIcon, DotsCircleHorizontalIcon } from "@heroicons/react/solid";
 import { ConfirmModal } from "@components/modal";
 import { useMutation } from "@apollo/client";
@@ -9,7 +8,7 @@ import { DeletePaymentData, DeletePaymentVars, DELETE_PAYMENT_MUTATION } from "@
 import { UserData, USER_QUERY } from "@graphql/user";
 import { useAuthContext } from "context/auth-context/auth-context";
 import { PaymentRequestBody } from "./payment-request-body";
-import { MarkPaymentPaidData, MarkPaymentPaidVars, MARK_PAYMENT_PAID_MUTATION } from "@graphql/payment/mark-payment-paid";
+import { SetPaymentPaidData, SetPaymentPaidVars, SET_PAYMENT_PAID_MUTATION } from "@graphql/payment/set-payment-paid";
 
 interface Props {
     payments: Payment[]
@@ -34,13 +33,13 @@ export function PaymentRequestSection(props: Props): React.ReactElement {
 
             if(!userData) return;
 
-            const updatedUser = { ...userData.user, sepa: userData.user.payments?.filter(p => p.id !== data?.deletePayment.id)};
+            const updatedUser = { ...userData.user, payment: userData.user.payments?.filter(p => p.id !== data?.deletePayment.id)};
 
             cache.writeQuery({ query: USER_QUERY, variables: { username: authUser?.username, onlyActive: true }, data: { user: updatedUser } });
         }
     });
 
-    const [ markPaymentPaid ] = useMutation<MarkPaymentPaidData, MarkPaymentPaidVars>(MARK_PAYMENT_PAID_MUTATION, {
+    const [ setPaymentPaid ] = useMutation<SetPaymentPaidData, SetPaymentPaidVars>(SET_PAYMENT_PAID_MUTATION, {
         errorPolicy: "all",
         update(cache, { data }) {
 
@@ -50,11 +49,11 @@ export function PaymentRequestSection(props: Props): React.ReactElement {
 
             const updatedUser = { ...userData.user, payments: 
                 userData.user.payments?.map(p => {
-                    if(p.id !== data?.markPaymentPaid.id) {
+                    if(p.id !== data?.setPaymentPaid.id) {
                         return p;
                     }
 
-                    return { ...p, isPaid: true };
+                    return { ...p, isPaid: !p.isPaid };
                 })
             }; 
 
@@ -72,16 +71,34 @@ export function PaymentRequestSection(props: Props): React.ReactElement {
         // needs to be implemented
     }
 
-    function onMarkPaid(p: Payment) {
-        markPaymentPaid({ variables: { id: parseInt("" + p.id) }});
+    function onTogglePaid(p: Payment) {
+
+        if(!p) return;
+
+        const id = parseInt("" + p.id);
+        setPaymentPaid({ 
+            variables: { id, paid: !p.isPaid },
+            optimisticResponse: {
+                setPaymentPaid: {
+                    id
+                }
+            }
+        });
     }
 
     function handleDeletePaymentRequest(p?: Payment) {
         if(!p) return;
 
         const id = parseInt("" + p.id);
-        const vars = { variables: { id } };
-        deletePaymentRequest(vars);
+
+        deletePaymentRequest({
+            variables: { id },
+            optimisticResponse: {
+                deletePayment: {
+                    id
+                }
+            }
+        });
     }
 
     return (
@@ -96,7 +113,7 @@ export function PaymentRequestSection(props: Props): React.ReactElement {
                     {p.isPaid ? <CheckCircleIcon className="h-8 w-8 text-green-500 justify-end" /> : <DotsCircleHorizontalIcon className="h-8 w-8 text-gray-500 items-center text-center" />}
                 </div>;
 
-                const content = <PaymentRequestBody payment={p} onMarkPaid={onMarkPaid} onDelete={onDelete} onEdit={onEdit} />;
+                const content = <PaymentRequestBody payment={p} onTogglePaid={onTogglePaid} onDelete={onDelete} onEdit={onEdit} />;
 
                 return (<Accordion key={p.id} title={header} content={content} />);
 

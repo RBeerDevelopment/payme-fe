@@ -19,10 +19,6 @@ export function AddPaymentRequestModal(props: Props): React.ReactElement {
             <Modal hideModal={hideModal} show={show} title="New Payment Request">
                 <div className="bg-white rounded-md pt-8 divide-y-2">
                     <AddPaymentRequestForm closeModal={hideModal} />
-                    {/* <div className="pt-4">
-                        {paymentOption.value === SupportedPaymentMethod.PayPal && <AddPaypalForm closeModal={hideModal} />}
-                        {paymentOption.value === SupportedPaymentMethod.Sepa   && <AddSepaForm closeModal={hideModal} />}
-                    </div> */}
                 </div>
             </Modal>
         </>
