@@ -1,4 +1,4 @@
-import { IconButton } from "@components/button";
+import { IconButton, TextOnlyButton } from "@components/button";
 import React from "react";
 import { TrashIcon, PencilAltIcon } from "@heroicons/react/outline";
 
@@ -14,9 +14,9 @@ export function PaymentOptionBody<T>(props: Props<T>): React.ReactElement {
     const { subject, onDelete, onEdit } = props;
     return (
         <div className="m-2 flex flew-row justify-evenly">
-            <IconButton text="Edit" icon={<PencilAltIcon className="text-white" />} bgColor="bg-gray-700" onClick={() => { onEdit(subject); }} />
+            <TextOnlyButton text="Edit" textColor="text-gray-600" onClick={() => { onEdit(subject); }} />
 
-            <IconButton text="Delete" icon={<TrashIcon className="text-white" />} bgColor="bg-red-600" onClick={() => { onDelete(subject); }} />
+            <TextOnlyButton text="Delete" textColor="text-red-600" onClick={() => { onDelete(subject); }} />
         </ div>
     );
 }

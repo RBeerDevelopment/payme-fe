@@ -11,7 +11,7 @@ export default function ProfilePage(): React.ReactElement {
     const { setTitle } = useAppContext();
 
     React.useEffect(() => {
-        setTitle("Profile");
+        setTitle("");
     }, []);
 
     return (
