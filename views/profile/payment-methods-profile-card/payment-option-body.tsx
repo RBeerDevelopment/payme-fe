@@ -1,6 +1,5 @@
-import { IconButton, TextOnlyButton } from "@components/button";
+import { TextOnlyButton } from "@components/button";
 import React from "react";
-import { TrashIcon, PencilAltIcon } from "@heroicons/react/outline";
 
 interface Props<T> {
     subject: T

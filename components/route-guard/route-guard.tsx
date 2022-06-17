@@ -7,7 +7,7 @@ interface Props {
     children: React.ReactNode
 }
 
-export const publicPaths = ["/", "/login"];
+export const publicPaths = ["/", "/login", "/account-created"];
 
 export function RouteGuard(props: Props): React.ReactElement {
     
